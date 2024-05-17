@@ -15,3 +15,17 @@
   margin: 4px auto;
   padding: 4px;
 }
+
+.title, .content{
+  display: block;
+  margin: 10px auto;
+}
+
+.new {
+  margin: 2% auto;
+  padding: 1% auto;
+  text-align: center;
+}
+.save, .reset, .cancel {
+  margin: 2px;
+}
