@@ -4,7 +4,7 @@ const ApiFeatures = require('./../utils/ApiFeatures');
 
 exports.getAllReviews = async (req, res) => {
     try{
-        const features = new ApiFeatures(reviewSchema.find(), req.query);
+        const features = new ApiFeatures(reviewSchema.find(), req.query).sort();
         let reviews = await features.query;
 
         res.status(200).json({
@@ -43,8 +43,7 @@ exports.getReview = async (req, res) => {
 
 exports.createReview = async (req, res) => {
     try{
-        updatedBody = {...req.body, dateTime: new Date()};
-        const review = await reviewSchema.create(req.body).sort();
+        const review = await reviewSchema.create(req.body);
 
         res.status(201).json({
             status: 'success',
