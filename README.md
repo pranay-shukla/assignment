@@ -6,7 +6,7 @@ npm i
 
 npm start
 
-after in the frontend
+after cloning in the frontend
 
 npm i
 

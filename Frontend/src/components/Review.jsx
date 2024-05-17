@@ -1,19 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Review = ({ review, serial }) => {
+const Review = ({ review, serial, handleDelete }) => {
   const navigate = useNavigate();
-  const handleDelete = (id) => {
-    const url = "http://127.0.0.1:3000/api/v1/reviews/" + id;
-    const requestOptions = {
-      method: "DELETE",
-    };
-    fetch(url, requestOptions)
-      .then((res) => res.json())
-      .then((res) => {
-        navigate("/");
-      });
-  };
+
   return (
     <>
       <tr>
