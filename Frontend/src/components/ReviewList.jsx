@@ -1,27 +1,20 @@
 import { Link } from "react-router-dom";
 import Review from "./Review";
+import { useEffect, useState } from "react";
 
 const ReviewList = () => {
-  const reviews = [
-    {
-      count: 1,
-      title: "review 1",
-      content: "Hey there",
-      timeStamp: "12/11/2023",
-    },
-    {
-      count: 1,
-      title: "review 1",
-      content: "Hey there",
-      timeStamp: "12/11/2023",
-    },
-    {
-      count: 1,
-      title: "review 1",
-      content: "Hey there",
-      timeStamp: "12/11/2023",
-    },
-  ];
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    const url = "http://127.0.0.1:3000/api/v1/reviews";
+    const requestOptions = {
+      method: "GET",
+    };
+    fetch(url, requestOptions)
+      .then((res) => res.json())
+      .then((res) => {
+        setReviews(res.data.reviews);
+      });
+  }, []);
   return (
     <div className="review-list">
       <Link to="/new" className="new">
@@ -39,8 +32,10 @@ const ReviewList = () => {
           </tr>
         </thead>
         <tbody>
-          {reviews.map((review) => {
-            return <Review review={review} />;
+          {reviews.map((review, index) => {
+            return (
+              <Review key={review._id} review={review} serial={index + 1} />
+            );
           })}
           {/* Add more rows as needed */}
         </tbody>

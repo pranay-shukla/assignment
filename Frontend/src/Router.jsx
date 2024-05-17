@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import ReviewList from "./components/ReviewList";
 import CreateNew from "./components/CreateNew.jsx";
+import EditReview from "./components/EditReview.jsx";
 
 export default function Router() {
   const routes = [
@@ -17,6 +18,10 @@ export default function Router() {
         {
           path: "new",
           element: <CreateNew />,
+        },
+        {
+          path: ":id",
+          element: <EditReview />,
         },
       ],
     },
