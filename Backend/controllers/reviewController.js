@@ -43,6 +43,7 @@ exports.getReview = async (req, res) => {
 
 exports.createReview = async (req, res) => {
     try{
+        console.log(req);
         const review = await reviewSchema.create(req.body);
 
         res.status(201).json({
